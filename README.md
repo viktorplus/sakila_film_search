@@ -47,36 +47,6 @@ cp .env.example .env   # затем отредактируйте .env (см. р�
 python main.py
 ```
 
-### Требования
-
-| Компонент     | Версия |
-|---------------|--------|
-| Python        | 3.10+  |
-| pymysql       | любая  |
-| pymongo       | любая  |
-| python-dotenv | любая  |
-
-## Конфигурация
-
-Все настройки подключений находятся в файле `.env`.
-Создайте его в корне проекта и заполните своими данными:
-
-```ini
-# --- MySQL ---
-MYSQL_HOST=your-mysql-host
-MYSQL_PORT=3306
-MYSQL_USER=your-user
-MYSQL_PASSWORD=your-password
-MYSQL_DB=sakila
-
-# --- MongoDB ---
-MONGO_URI=mongodb://user:password@host:port/?authSource=db_name
-MONGO_DB=your-db
-MONGO_COLLECTION=your-collection-name
-```
-
-> **Важно:** файл `.env` содержит пароли и добавлен в `.gitignore` — он не попадает в Git.
-
 ## Технологии
 
 | Технология        | Назначение                                     |
