@@ -97,17 +97,17 @@ def _paginate(
         # Берём только первые PAGE_SIZE записей для отображения (11-ю не показываем)
         page: list[tuple] = results[:PAGE_SIZE]
 
-        if not page:
-            # Если результатов нет вообще (первая страница пуста)
-            if first_page:
-                print(f"  ❌ {YELLOW}No films found.{RESET}")
-            break
-
         # Логируем запрос в MongoDB ТОЛЬКО при первой загрузке страницы.
-        # Это предотвращает дублирование записей при листании страниц.
+        # Логируем даже пустые результаты — это помогает понять,
+        # какие фильмы пользователи ищут и чего не хватает в базе.
         if first_page:
             log_search(log_type, log_params)
             first_page = False
+
+        if not page:
+            # Если результатов нет вообще (первая страница пуста)
+            print(f"  ❌ {YELLOW}No films found.{RESET}")
+            break
 
         # Выводим фильмы текущей страницы в виде таблицы с рамкой
         print_films(page, total_count, search_label)
